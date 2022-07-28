@@ -55,7 +55,7 @@ public class Main extends javax.swing.JFrame {
     public void loadNV(){
         File f = new File(fNV);
         if(f.exists()){
-            listDV=IOFile.doc(fNV);
+            listNV=IOFile.doc(fNV);
         }
         else{
             listNV=new ArrayList<>();
@@ -71,7 +71,7 @@ public class Main extends javax.swing.JFrame {
     public void showNV(List<Nhanvien> list){
         tmNV.setRowCount(0);
         for(Nhanvien i:list){
-            tmDV.addRow(i.toObjects());
+            tmNV.addRow(i.toObjects());
         }
     }
     
@@ -437,11 +437,12 @@ public class Main extends javax.swing.JFrame {
             ten=jTextField6.getText();
             diachi=jTextField7.getText();
             sdt=jTextField8.getText();
-            if(jTextField6.getText().isEmpty() || jTextField7.getText().isEmpty()) throw new TrongExeption();
+            if(ten.isEmpty() || diachi.isEmpty()) throw new TrongExeption();
             if(!sdt.matches("\\d+")) throw new SoExeption();
             Nhanvien nv = new Nhanvien(ten, diachi, sdt);
             listNV.add(nv);
             tmNV.addRow(nv.toObjects());
+            
             }catch(TrongExeption e){
                 JOptionPane.showMessageDialog(this, "Khong duoc de trong");
                 jTextField6.requestFocus();
@@ -509,6 +510,7 @@ public class Main extends javax.swing.JFrame {
     private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
         // TODO add your handling code here:
         IOFile.viet(fDV, listDV);
+        JOptionPane.showMessageDialog(this,"Da luu vao file");
         
     }//GEN-LAST:event_btLuuActionPerformed
 
@@ -527,7 +529,7 @@ public class Main extends javax.swing.JFrame {
     private void btLuu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuu2ActionPerformed
         // TODO add your handling code here:
         IOFile.viet(fNV, listNV);
-        JOptionPane.showMessageDialog(this, "Da luu vao file");
+        JOptionPane.showMessageDialog(this,"Da luu vao file");
     }//GEN-LAST:event_btLuu2ActionPerformed
 
     /**

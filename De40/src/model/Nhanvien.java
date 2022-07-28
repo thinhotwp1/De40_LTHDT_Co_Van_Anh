@@ -25,9 +25,7 @@ public class Nhanvien implements Serializable{
     public Nhanvien() {
     }
 
-    public Nhanvien(String ten, String diachi, String sdt) throws TrongExeption,SoExeption{
-        if(ten.isEmpty() || diachi.isEmpty()) throw new TrongExeption();
-        if(!sdt.matches("\\d+")) throw new SoExeption();
+    public Nhanvien(String ten, String diachi, String sdt){
         this.ma = sma++;
         this.ten = ten;
         this.diachi = diachi;
